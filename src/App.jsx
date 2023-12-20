@@ -7,26 +7,31 @@ function App() {
   const [featPupId, setFeatPupId] = useState(null);
   const featuredPup = puppies.find((pup)=> pup.id === featPupId);
   return (
-      <div>
-        { 
-          puppies.map((puppy) => {
-            return <p onClick = {()=>{setFeatPupId(puppy.id)}} key={puppy.id}>{puppy.name}</p>
-          })
-        }
-   
-        {(() => {
-          if (featuredPup) {
-            return <div>
-                      <h1>{featuredPup.name}</h1>
-                      <ul>
-                        <li>Age: {featuredPup.age}</li>
-                        <li>Email: {featuredPup.email}</li>
-                      </ul>
-                    </div>
-          } else {
-            return <h1>No Featured Pup.</h1>;
+      <div id="app">
+
+        <div id="pupList">
+          { 
+            puppies.map((puppy) => {
+              return <p id="listItems" onClick = {()=>{setFeatPupId(puppy.id)}} key={puppy.id}>{puppy.name}</p>
+            })
           }
-        })()}
+        </div>
+
+      <div id='pupFeature'>
+          {(() => {
+            if (featuredPup) {
+              return <div>
+                        <h1>{featuredPup.name}</h1>
+                        <ul>
+                          <li>Age: {featuredPup.age}</li>
+                          <li>Email: {featuredPup.email}</li>
+                        </ul>
+                      </div>
+            } else {
+              return <h1>No Featured Pup.</h1>;
+            }
+          })()}
+      </div>
 
       </div>
   )
